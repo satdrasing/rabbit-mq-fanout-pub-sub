@@ -31,17 +31,18 @@ public class RabbitMQConfig {
         return ExchangeBuilder.fanoutExchange(WEATHER_NOTIFICATION_EXCHANGE).build();
     }
 
-
+    @Bean
     Binding binding1Q(@Qualifier("subStation1Queue") Queue queue1, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(queue1).to(fanoutExchange);
     }
 
+    @Bean
     Binding binding2Q(@Qualifier("subStation2Queue") Queue queue2, FanoutExchange fanoutExchange) {
         return BindingBuilder.bind(queue2).to(fanoutExchange);
     }
 
 
-    // to json
+    // configuration: to convert set message to json
     @Bean
     public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
         final RabbitTemplate rabbitTemplate = new RabbitTemplate(connectionFactory);

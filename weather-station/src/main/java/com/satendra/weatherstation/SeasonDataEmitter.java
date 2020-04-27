@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public class SeasonDataEmitter {
     final List<SeasonType> seasonData = Collections.unmodifiableList(Arrays.asList(SeasonType.values()));
 
     final Random random = new Random();
+
 
     final private SeasonSender seasonSender;
 
